@@ -41,7 +41,7 @@ export default function HomePage() {
       if (filters.user_lng) params.user_lng = filters.user_lng;
       if (filters.radius) params.radius = filters.radius;
       const { data } = await api.get('/listings', { params });
-      setListings(data.listings);
+      setListings(data?.listings || []);
       setTotalPages(data.pages);
     } catch (err) {
       console.error('Failed to fetch listings:', err);
