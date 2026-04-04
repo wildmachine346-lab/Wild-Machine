@@ -1,0 +1,72 @@
+{
+  "summary": "BTCPay Server integration fully tested. All 19 backend tests passed. Frontend verification confirms 'Pay with Bitcoin' button, CAD pricing, no Stripe references.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "passed_tests": [
+    "✅ GET /api/premium-packages returns 200",
+    "✅ Premium packages contain 6 packages (featured_7, featured_30, featured_90, top_featured_7, top_featured_30, top_featured_90)",
+    "✅ All packages have currency: 'CAD' (not USD)",
+    "✅ All packages have correct structure (name, premium_type, duration_days, price, currency)",
+    "✅ POST /api/btcpay/create-invoice requires authentication (returns 401 without token)",
+    "✅ POST /api/btcpay/create-invoice requires escort role (admin gets 403)",
+    "✅ POST /api/btcpay/create-invoice returns 503 when BTCPay not configured (expected behavior)",
+    "✅ GET /api/btcpay/payment-status/{txn_id} requires authentication",
+    "✅ GET /api/btcpay/payment-status/{txn_id} returns 404 for unknown transaction",
+    "✅ POST /api/webhook/btcpay accepts POST requests and returns 200",
+    "✅ POST /api/webhook/btcpay handles InvoiceSettled event",
+    "✅ POST /api/webhook/btcpay handles InvoiceExpired event",
+    "✅ POST /api/webhook/btcpay handles InvoiceInvalid event",
+    "✅ POST /api/webhook/btcpay handles empty payload gracefully",
+    "✅ ZERO Stripe references in server.py",
+    "✅ ZERO Stripe references in backend/.env",
+    "✅ ZERO Stripe references in requirements.txt",
+    "✅ ZERO Stripe references in frontend JS files",
+    "✅ BTCPay env vars defined in .env (BTCPAY_SERVER_URL, BTCPAY_API_KEY, BTCPAY_STORE_ID, BTCPAY_WEBHOOK_SECRET)",
+    "✅ Frontend: EscortDashboard shows 'Pay with Bitcoin — XX.XX $CAD' button",
+    "✅ Frontend: Premium upgrade dialog shows correct pricing in CAD",
+    "✅ Frontend: PaymentSuccessPage renders correctly with txn_id param",
+    "✅ Frontend: i18n has pay_with_btc key in EN ('Pay with Bitcoin')",
+    "✅ Frontend: i18n has pay_with_btc key in FR ('Payer en Bitcoin')",
+    "✅ Frontend: i18n has pay_with_btc key in ZH ('用比特币支付')",
+    "✅ Frontend: PrivacyPolicyPage mentions BTCPay Server in Third-Party Sharing section",
+    "✅ Frontend: PrivacyPolicyPage mentions BTCPay Server in Payments section",
+    "✅ Frontend: PrivacyPolicyPage has NO Stripe references"
+  ],
+  "test_report_links": [
+    "/app/backend/tests/test_btcpay_integration.py",
+    "/app/test_reports/pytest/pytest_btcpay.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_btcpay_integration.py"
+  ],
+  "success_rate": {
+    "backend": "100% (19/19 tests passed)",
+    "frontend": "100% (all BTCPay features verified)"
+  },
+  "test_credentials": {
+    "admin": "admin@wildmachine.com / password123",
+    "escort": "escort1@wildmachine.com / password123"
+  },
+  "seed_data_creation": "No new seed data created",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "BTCPay Server integration complete. Stripe fully removed. BTCPAY_* env vars are empty (not configured) - this is intentional as BTCPay Server is not connected in preview. create-invoice returns 503 as expected. Premium packages use CAD currency. Privacy policy page route is /privacy-policy (not /legal). Dashboard payment dialog shows 'Pay with Bitcoin — XX.XX $CAD'.",
+  "btcpay_integration_notes": {
+    "env_vars_present": true,
+    "env_vars_configured": false,
+    "expected_behavior_when_not_configured": "POST /api/btcpay/create-invoice returns 503 'BTCPay Server not configured'",
+    "webhook_working": true,
+    "payment_status_working": true,
+    "stripe_removed": true,
+    "currency": "CAD"
+  }
+}

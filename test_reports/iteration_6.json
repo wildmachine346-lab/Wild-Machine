@@ -1,0 +1,97 @@
+{
+  "summary": "Comprehensive testing of Wild Machine rebranding and new features completed. Backend: 13/14 tests passed (93%). Frontend: All branding, filter, and dashboard features verified working.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/health", "issue": "Health endpoint returns 404 - endpoint does not exist", "priority": "LOW"}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Filter Panel Dialog", "issues": ["Minor console warning: Missing Description or aria-describedby for DialogContent - accessibility enhancement"]}
+    ]
+  },
+  "passed_tests": [
+    "✅ Header shows 'Wild Machine' branding with gold accent",
+    "✅ Hero section shows 'Wild Machine' text",
+    "✅ Footer shows 'Wild Machine', support@wildmachine.com, © 2025 Wild Machine",
+    "✅ Age Gate displays 'Wild Machine' branding",
+    "✅ Page title: 'Wild Machine - Premium Escort Directory'",
+    "✅ Meta description contains 'Wild Machine'",
+    "✅ Listing detail page title contains 'Wild Machine'",
+    "✅ NO 'Pink Lantern' text anywhere on UI",
+    "✅ NO Emergent badge or scripts in HTML",
+    "✅ Filters panel has Car Call switch",
+    "✅ Filters panel has En Ligne (Online) switch",
+    "✅ Filters panel has Trans switch",
+    "✅ City dropdown shows Quebec cities (Montréal, Laval, Longueuil, etc.)",
+    "✅ NO old cities (Toronto, Vancouver, Paris, Shanghai) in data",
+    "✅ Listing cards display Car Call badges",
+    "✅ Listing cards display Online badges",
+    "✅ Listing cards display Trans badges",
+    "✅ Backend API: GET /api/listings supports car_call filter",
+    "✅ Backend API: GET /api/listings supports en_ligne filter",
+    "✅ Backend API: GET /api/listings supports is_trans filter",
+    "✅ Backend API: POST /api/listings creates listings with car_call, en_ligne, is_trans",
+    "✅ Backend API: Listings response includes new service fields",
+    "✅ Admin login works with admin@wildmachine.com",
+    "✅ Escort login works with escort1@wildmachine.com",
+    "✅ Escort Dashboard form has Car Call switch",
+    "✅ Escort Dashboard form has En Ligne (Online) switch",
+    "✅ Escort Dashboard form has Trans switch",
+    "✅ Edit Listing form has all new service switches",
+    "✅ 14 Quebec cities present in seed data"
+  ],
+  "test_report_links": [
+    "/app/backend/tests/test_wild_machine_features.py",
+    "/app/test_reports/pytest/pytest_wild_machine.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [
+    "/app/backend/tests/test_wild_machine_features.py"
+  ],
+  "success_rate": {
+    "backend": "93% (13/14 tests passed)",
+    "frontend": "100% (all features verified)"
+  },
+  "test_credentials": {
+    "admin": "admin@wildmachine.com / password123",
+    "escort": "escort1@wildmachine.com / password123"
+  },
+  "seed_data_creation": "Database was re-seeded with 14 Quebec cities and new wildmachine.com email domains",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Wild Machine rebranding complete. All Pink Lantern and Emergent references removed. New service types (car_call, en_ligne, is_trans) working in API and UI. 14 Quebec cities in seed data. Login selectors: data-testid='login-email-input', data-testid='login-password-input', data-testid='login-submit-btn'. Age gate bypass: click [data-testid='age-gate-enter-btn'].",
+  "features_verified": {
+    "branding": {
+      "wild_machine_header": "VERIFIED",
+      "wild_machine_footer": "VERIFIED",
+      "wild_machine_age_gate": "VERIFIED",
+      "wild_machine_seo": "VERIFIED",
+      "pink_lantern_removed": "VERIFIED",
+      "emergent_removed": "VERIFIED"
+    },
+    "new_service_types": {
+      "car_call_filter": "VERIFIED",
+      "en_ligne_filter": "VERIFIED",
+      "is_trans_filter": "VERIFIED",
+      "car_call_badge": "VERIFIED",
+      "online_badge": "VERIFIED",
+      "trans_badge": "VERIFIED",
+      "dashboard_car_call_switch": "VERIFIED",
+      "dashboard_en_ligne_switch": "VERIFIED",
+      "dashboard_trans_switch": "VERIFIED"
+    },
+    "quebec_cities": {
+      "14_cities_in_data": "VERIFIED",
+      "old_cities_removed": "VERIFIED"
+    },
+    "authentication": {
+      "admin_login": "VERIFIED",
+      "escort_login": "VERIFIED"
+    }
+  }
+}
