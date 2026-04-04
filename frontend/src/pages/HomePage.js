@@ -42,7 +42,7 @@ export default function HomePage() {
       if (filters.radius) params.radius = filters.radius;
       const { data } = await api.get('/listings', { params });
       setListings(data?.listings || []);
-      setTotalPages(data.pages);
+      setTotalPages(data?.pages || 1);
     } catch (err) {
       console.error('Failed to fetch listings:', err);
     } finally {
