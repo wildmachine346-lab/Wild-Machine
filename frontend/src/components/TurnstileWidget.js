@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const TURNSTILE_SITEKEY = '1x00000000000000000000AA';
+const TURNSTILE_SITEKEY = process.env.REACT_APP_TURNSTILE_SITE_KEY;
 
 export function TurnstileWidget({ onVerify, onError }) {
   const containerRef = useRef(null);
