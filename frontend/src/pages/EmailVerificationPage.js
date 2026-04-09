@@ -14,7 +14,7 @@ export default function EmailVerificationPage() {
     if (!token) { setStatus('invalid'); return; }
     const verifyEmail = async () => {
       try {
-        await api.post(`/api/auth/verify-email?token=${token}`);
+        await api.post(`/auth/verify-email?token=${token}`);
         setStatus('success');
       } catch (err) {
         const msg = err.response?.data?.detail || '';
