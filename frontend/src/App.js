@@ -1,4 +1,5 @@
 import "@/App.css";
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { I18nProvider } from './context/I18nContext';
@@ -18,6 +19,19 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import AboutPage from './pages/AboutPage';
 
 function App() {
+  useEffect(() => {
+    const existingScript = document.querySelector(
+      'script[src="https://js.juicyads.com/jp.php?c=446433y2s294u4r2p2a4x2c444&u=https%3A%2F%2Fwww.juicyads.rocks"]'
+    );
+
+    if (existingScript) return;
+
+    const script = document.createElement("script");
+    script.src = "https://js.juicyads.com/jp.php?c=446433y2s294u4r2p2a4x2c444&u=https%3A%2F%2Fwww.juicyads.rocks";
+    script.type = "text/javascript";
+    document.body.appendChild(script);
+  }, []);
+
   return (
     <HelmetProvider>
       <BrowserRouter>
